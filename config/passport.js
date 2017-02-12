@@ -3,6 +3,19 @@ var passport = require('passport'),
   FacebookStrategy = require('passport-facebook').Strategy,
   bcrypt = require('bcrypt');
 
+function findByFacebookId(id, fn){
+    User.findOne({
+        facebookId: id
+    }).done(function(err, user){
+        if (err){
+            return fn(null, null);
+        }
+        else{
+            return fn(null, user);
+        }
+    })
+}
+
 passport.serializeUser(function(user, done) {
   done(null, user.id);
 });
