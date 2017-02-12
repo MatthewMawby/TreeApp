@@ -7,6 +7,10 @@
 
 module.exports = {
   //ACTION NAME
+  login: function(req, res){
+      res.view();
+  },
+
   create: function(req, res) {
     //This is what the action will do
     //Creates a User in the database based on
