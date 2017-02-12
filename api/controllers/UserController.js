@@ -13,7 +13,8 @@ module.exports = {
     var params = req.params.all();
     User.create({
         email: params.email,
-        password: params.password
+        password: params.password,
+        facebookId: params.facebookId
       })
       //CALLBACK ON SUCCESS OR FAIL
       .exec(function createCB(err, created) {
