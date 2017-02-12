@@ -41,7 +41,7 @@ module.exports = {
   'facebook' : function(req, res, next){
       passport.authenticate('facebook', {scope: ['email', 'user_about_me']},
           function(err, user){
-              req.logIn(user, functino(err){
+              req.logIn(user, function(err){
                   if(err){
                       req.session.flash = 'Error';
                       res.redirect('user/login');

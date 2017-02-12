@@ -17,7 +17,7 @@ module.exports = {
 
   login: function(req, res) {
 
-    passport.authenticate('local', function(err, user, info) {
+    passport.authenticate(['local', 'facebook'], function(err, user, info) {
       if ((err) || (!user)) {
         return res.send({
           message: info.message,

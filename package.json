@@ -44,6 +44,7 @@
     "node-schedule": "^1.1.0",
     "node-uuid": "^1.4.7",
     "passport": "^0.3.2",
+    "passport-facebook": "^2.1.1",
     "passport-local": "^1.0.0",
     "randomstring": "^1.1.4",
     "rc": "1.0.1",
