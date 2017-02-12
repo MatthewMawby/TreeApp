@@ -20,6 +20,11 @@ module.exports = {
       minLength: 6,
       required: true
     },
+    facebookId: {
+        type: 'string',
+        required: false,
+        unique: true
+    }
     toJSON: function() {
       var obj = this.toObject();
       delete obj.password;
