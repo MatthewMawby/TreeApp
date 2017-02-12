@@ -11,6 +11,12 @@ module.exports = {
       res.view();
   },
 
+  logout: function(req, res){
+      req.session.user = null,
+      req.session.flash = 'Logged out successfully';
+      res.redirect('user/login');
+  }
+  
   create: function(req, res) {
     //This is what the action will do
     //Creates a User in the database based on
