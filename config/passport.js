@@ -1,5 +1,6 @@
 var passport = require('passport'),
   LocalStrategy = require('passport-local').Strategy,
+  FacebookStrategy = require('passport-facebook').Strategy,
   bcrypt = require('bcrypt');
 
 passport.serializeUser(function(user, done) {
@@ -49,3 +50,25 @@ passport.use(new LocalStrategy({
     });
   }
 ));
+
+passport.use(new FacebookStrategy({
+    clientID: 'ClientID',
+    clientSecret: 'clientSecret',
+    callbackURL: 'http://localhost:1337/user/facebook/callback',
+    enableProof: false
+}, function(accessToken, refreshToken, profile, done){
+    findByFacebookId(profile.id, function(err, user){
+        if (!user){
+            user.create({
+                facebookId: profile.id
+            }).done(function(err, user){
+                if (user){
+                    return done(null, user, { message: 'Logged In Successfully'});
+                }
+                else{
+                    return done(err, null, { message: 'There was an error logging in with Facebook'});
+                }
+            });
+        }
+    });
+}));
